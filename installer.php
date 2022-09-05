@@ -3,79 +3,13 @@
 <?php require_once "includes/header.php" ?>
 
 <?php session_start() ?>
-
+<div class="container-fluid">
 <?php 
 
-if(file_exists("/includes/config.php")){
-}else{
-    ?>
+if(file_exists("./includes/config.php")){
+    ?> 
     <!-- Sign In Start -->
-<div class="container-fluid">
-            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>AttendaX</h3>
-                            </a>
-                            <h5>Configure Database</h5>
-
-                        </div>
-                        <?php
-        if(isset($_POST['btn-db']))
-        {
-            $ip = $_POST['ip'];
-            $db_name = $_POST['dbname'];
-            $db_user_name = $_POST['dbusername'];
-            $db_password = $_POST['dbpassword'];
-            
-            $myfile = fopen("includes/config.php", "w") or die("Unable to open file!");
-            $txt = "<?php
-
-            return array(
-                'host' => '$ip',
-                'database' => '$db_name',
-                'username' => '$db_user_name',
-                'password' => '$db_password'
-            );
-            ?>";
-            fwrite($myfile, $txt);
-            fclose($myfile);
-            
-        }
-    ?>
-                        <form action="" method="POST" enctype="multipart/form-data">
-                        <div class="form-floating mb-3">
-                            <input type="text" name="ip" class="form-control" placeholder="Host" id="floatingInput">
-                            <label for="floatingInput">Host</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" name="dbname" class="form-control" placeholder="DB Name" id="floatingInput">
-                            <label for="floatingInput">DB Name</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" name="dbusername" class="form-control" placeholder="DB User Name" id="floatingInput">
-                            <label for="floatingInput">DB User Name</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" name="dbpassword" class="form-control" placeholder="DB Password" id="floatingPassword">
-                            <label for="floatingPassword">DB Password</label>
-                        </div>
-                        <button type="submit" name="btn-db" class="btn btn-primary py-3 w-100 mb-4">Initialize</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sign In End -->
-        <?php
-}
-?>
-
-
-
-        <!-- Sign In Start -->
-        <div class="container-fluid">
+    <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
@@ -211,7 +145,78 @@ if(file_exists("/includes/config.php")){
                 </div>
             </div>
         </div>
+        <!-- Sign In End --><?php
+}else{
+
+    ?>
+    <!-- Sign In Start -->
+
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <a href="index.html" class="">
+                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>AttendaX</h3>
+                            </a>
+                            <h5>Configure Database</h5>
+
+                        </div>
+                        <?php
+        if(isset($_POST['btn-db']))
+        {
+            $ip = $_POST['ip'];
+            $db_name = $_POST['dbname'];
+            $db_user_name = $_POST['dbusername'];
+            $db_password = $_POST['dbpassword'];
+            
+            $myfile = fopen("includes/config.php", "w") or die("Unable to open file!");
+            $txt = "<?php
+
+            return array(
+                'host' => '$ip',
+                'database' => '$db_name',
+                'username' => '$db_user_name',
+                'password' => '$db_password'
+            );
+            ?>";
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
+            header('location: installer.php');
+            
+        }
+    ?>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="ip" class="form-control" placeholder="Host" id="floatingInput">
+                            <label for="floatingInput">Host</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="dbname" class="form-control" placeholder="DB Name" id="floatingInput">
+                            <label for="floatingInput">DB Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="dbusername" class="form-control" placeholder="DB User Name" id="floatingInput">
+                            <label for="floatingInput">DB User Name</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" name="dbpassword" class="form-control" placeholder="DB Password" id="floatingPassword">
+                            <label for="floatingPassword">DB Password</label>
+                        </div>
+                        <button type="submit" name="btn-db" class="btn btn-primary py-3 w-100 mb-4">Initialize</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Sign In End -->
+        <?php
+}
+?>
+
+
+
+        
     </div>
 
 <!-- Footer -->
