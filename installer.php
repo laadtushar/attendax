@@ -4,7 +4,12 @@
 
 <?php session_start() ?>
 
-<!-- Sign In Start -->
+<?php 
+
+if(file_exists("/includes/config.php")){
+}else{
+    ?>
+    <!-- Sign In Start -->
 <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
@@ -13,7 +18,7 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>AttendaX</h3>
                             </a>
-                            <h3>Initialize AMS</h3>
+                            <h5>Configure Database</h5>
 
                         </div>
                         <?php
@@ -63,6 +68,11 @@
             </div>
         </div>
         <!-- Sign In End -->
+        <?php
+}
+?>
+
+
 
         <!-- Sign In Start -->
         <div class="container-fluid">
@@ -73,7 +83,7 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>AttendaX</h3>
                             </a>
-                            <h3>Initialize AMS</h3>
+                            <h5>Initialize Database</h5>
 
                         </div>
                         <?php
